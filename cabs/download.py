@@ -86,6 +86,14 @@ if __name__ == "__main__":
 	else:
 		thread_count = len(files_to_download)
 	print("Downloading {} TomTom firmwares...".format(len(files_to_download)))
+
+	# Make sure firmware folder exists
+	try:
+		if not os.path.exists("firmware"):
+			os.mkdir("firmware");
+	except OSError:
+		print ("Could not create firmware directory")
+
 	results = ThreadPool(thread_count ).imap_unordered(download_file, files_to_download)
 
 	bad_requests = 0
