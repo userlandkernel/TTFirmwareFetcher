@@ -15,5 +15,7 @@ A download client for TomTom firmware using python3 and various sources
 5. You'll find the extracted firmware in the firmware directory, use `cd firmware`
 6. That's it!
 
+* In case you face "permission issues" do not forget to make the extract script executable with chmod +x cabs/extract.sh
+
 ## Remarks
 - This script is written very lazily, pull requests are welcome
