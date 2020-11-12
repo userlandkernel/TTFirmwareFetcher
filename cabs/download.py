@@ -31,7 +31,7 @@ def download_file(file):
 					f.write(contents.content)
 					return True
 			else:
-				print("{} did not return a cab file, not going to save it.")
+				print("{} did not return a cab file, not going to save it.".format(file))
 				return False
 
 	except Exception as exc:
