@@ -25,9 +25,14 @@ def download_file(file):
 		download_path = os.path.join("firmware", file.rsplit('/',1)[-1])
 
 		if contents.status_code == requests.codes.ok:
-			with open(download_path, "wb+") as f:
-				f.write(contents.content)
-				return True
+			# ensure we actually got a cab archive
+			if contents.content[:4].hex() == "4d534346": # Checking signature, http://download.microsoft.com/download/4/d/a/4da14f27-b4ef-4170-a6e6-5b1ef85b1baa/[ms-cab].pdf
+				with open(download_path, "wb+") as f:
+					f.write(contents.content)
+					return True
+			else:
+				print("{} did not return a cab file, not going to save it.")
+
 	except Exception as exc:
 		print("Error while trying to get {}: {}".format(file ,exc))
 	return False
