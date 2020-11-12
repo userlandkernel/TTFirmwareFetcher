@@ -32,6 +32,7 @@ def download_file(file):
 					return True
 			else:
 				print("{} did not return a cab file, not going to save it.")
+				return False
 
 	except Exception as exc:
 		print("Error while trying to get {}: {}".format(file ,exc))
